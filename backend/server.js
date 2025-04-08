@@ -1,7 +1,14 @@
 const express = require("express");
-//const cors = require("cors");
+const cors = require("cors"); // ✅ UNCOMMENT THIS LINE
 
 const app = express();
+
+// ✅ ENABLE CORS FOR ALL ORIGINS (or specify your frontend IP/domain)
+app.use(cors({
+  origin: "*", // or use: origin: "http://107.22.145.42"
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"]
+}));
 
 // parse requests of content-type - application/json
 app.use(express.json());
